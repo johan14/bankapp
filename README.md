@@ -47,14 +47,19 @@ Then you can hit `localhost:8080/api/v1/addAccount` endpoint to create an accoun
 
 Sequence diagram:
 
+![bank](https://github.com/johan14/bankapp/assets/28931298/ef43a245-c09d-4c43-b2d9-5f3f99ff584d)
+
 ## API Documentation
 
 This application uses **Swagger** for API documentation.
+
+![image](https://github.com/johan14/bankapp/assets/28931298/cbb7c99a-b737-40ba-bff8-b675e968751e)
 
 ## Testing Coverage
 
 There is a 91% testing coverage using **JUnit** library for integration test.
 
+![image](https://github.com/johan14/bankapp/assets/28931298/6863d0a6-013d-4e23-bb83-4ed67d6adfbf)
 
 
 
