@@ -48,7 +48,7 @@ public class BankControllerIT {
     customer.setName("Bill");
 
     ResponseEntity<Customer> response = restTemplate.postForEntity(
-        baseUrl + port + "/addCustomer", customer, Customer.class);
+        baseUrl + port + "/api/v1/addCustomer", customer, Customer.class);
 
     Assertions.assertNotNull(response.getBody());
     Assertions.assertEquals(customer.getId(), response.getBody().getId());
@@ -70,7 +70,7 @@ public class BankControllerIT {
     accountRequest.setBalance(100.0);
 
     ResponseEntity<Account> response = restTemplate.postForEntity(
-        baseUrl + port + "/addAccount", accountRequest, Account.class);
+        baseUrl + port + "/api/v1/addAccount", accountRequest, Account.class);
 
     Assertions.assertNotNull(response.getBody());
     Assert.notEmpty(customer.getAccountList(), "Collection must contain elements");
@@ -93,7 +93,7 @@ public class BankControllerIT {
     accountRequest.setBalance(100.0);
 
     ResponseEntity<String> response = restTemplate.postForEntity(
-        baseUrl + port + "/addAccount", accountRequest, String.class);
+        baseUrl + port + "/api/v1/addAccount", accountRequest, String.class);
 
     Assertions.assertNotNull(response.getBody());
     Assertions.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
@@ -119,7 +119,7 @@ public class BankControllerIT {
         .receiverAccountId(2).amount(50).build();
 
     ResponseEntity<String> response = restTemplate.postForEntity(
-        baseUrl + port + "/transfer", transfer, String.class);
+        baseUrl + port + "/api/v1/transfer", transfer, String.class);
 
     Assertions.assertNotNull(response);
     Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -148,7 +148,7 @@ public class BankControllerIT {
         .receiverAccountId(2).amount(-50).build();
 
     ResponseEntity<String> response = restTemplate.postForEntity(
-        baseUrl + port + "/transfer", transfer, String.class);
+        baseUrl + port + "/api/v1/transfer", transfer, String.class);
 
     Assertions.assertNotNull(response);
     Assertions.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
@@ -170,7 +170,7 @@ public class BankControllerIT {
     final int accountNo = 1;
 
     ResponseEntity<Account> response = restTemplate.getForEntity(
-        baseUrl + port + "/balances?accountId=" + accountNo, Account.class);
+        baseUrl + port + "/api/v1/balances?accountId=" + accountNo, Account.class);
 
     Assertions.assertNotNull(response);
     Assertions.assertNotNull(response.getBody());
@@ -202,7 +202,7 @@ public class BankControllerIT {
     final int ACCOUNT_ID = 1;
 
     ResponseEntity<List> response = restTemplate.getForEntity(
-        baseUrl + port + "/transferHistory?accountId=" + ACCOUNT_ID, List.class);
+        baseUrl + port + "/api/v1/transferHistory?accountId=" + ACCOUNT_ID, List.class);
 
     Assertions.assertNotNull(response);
     Assertions.assertNotNull(response.getBody());
